@@ -1,0 +1,1 @@
+// reutilizar porciones visuales como fondos y contenedores
