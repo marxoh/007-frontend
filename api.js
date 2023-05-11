@@ -18,3 +18,10 @@ export const addTask = async (task) => {
     })
     return await res.json()
 }
+
+export const deleteTask = async (id) => {
+    const res = await fetch(`${API}/${id}`, {
+        method: 'DELETE'
+    })
+    // return await res.json() //por tabnine
+}

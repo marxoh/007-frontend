@@ -2,7 +2,7 @@
 //flatlist: lista de elementos que recorre automaticamente
 import { FlatList, RefreshControl } from "react-native";
 import React, { useEffect, useState } from "react";
-import { getTasks } from "../api";
+import { getTasks, deleteTask } from "../api";
 import TaskItem from "./TaskItem";
 
 const TaskList = () => {
@@ -21,10 +21,15 @@ const TaskList = () => {
     loadTasks();
   }, []);
 
+  const deleteTaskHandler = async (id) => {
+    await deleteTask(id);
+    await loadTasks();
+  };
+
   //{item}: con llaves solo para extraer el item del obj que llega
   const renderItem = ({ item }) => {
     //se va a querer retornar un componente TaskItem
-    return <TaskItem task={item} />;
+    return <TaskItem task={item} deleteTaskHandler={deleteTaskHandler}/>;
   };
 
   const onRefresh = React.useCallback(async () => {
@@ -50,6 +55,7 @@ const TaskList = () => {
           refreshing={refreshing}
           colors={["#78408f"]}
           onRefresh={onRefresh}
+          progressBackgroundColor="#0a3d62"
         />
       }
     />
