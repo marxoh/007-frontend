@@ -4,10 +4,13 @@ import { FlatList, RefreshControl } from "react-native";
 import React, { useEffect, useState } from "react";
 import { getTasks, deleteTask } from "../api";
 import TaskItem from "./TaskItem";
+import { useIsFocused } from "@react-navigation/native";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+
+  const isFocused = useIsFocused();//booleano para ver si el componente esta activo o no
 
   const loadTasks = async () => {
     //de getTasks() viene un json que contiene los datos de la api
@@ -19,7 +22,7 @@ const TaskList = () => {
   //al cargar la pagina, como el componentdidmount
   useEffect(() => {
     loadTasks();
-  }, []);
+  }, [isFocused]);
 
   const deleteTaskHandler = async (id) => {
     await deleteTask(id);

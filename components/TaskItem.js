@@ -2,15 +2,16 @@
 //y poder definir como va a lucir dentro de la tarea
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 const TaskItem = ({ task, deleteTaskHandler }) => {
-
   const navigation = useNavigation();
 
   return (
     <View style={styles.itemContainer}>
-      <TouchableOpacity onPress={()=>navigation.navigate('TaskFormScreen')}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("TaskFormScreen", { id: task.id })}
+      >
         <Text style={styles.itemTitle}>{task.title}</Text>
         <Text style={styles.itemTitle}>{task.description}</Text>
       </TouchableOpacity>
@@ -20,8 +21,11 @@ const TaskItem = ({ task, deleteTaskHandler }) => {
           borderWidth: 1,
           borderColor: "#9f1f00",
           padding: 7,
-          borderRadius: 5 }}
-          onPress={()=> {deleteTaskHandler(task.id)}}
+          borderRadius: 5,
+        }}
+        onPress={() => {
+          deleteTaskHandler(task.id);
+        }}
       >
         <Text style={styles.itemX}>X</Text>
       </TouchableOpacity>
@@ -48,7 +52,7 @@ const styles = StyleSheet.create({
     // textAlign
   },
   itemX: {
-    color:  "#9f1f00",
+    color: "#9f1f00",
     // alignContent: "center",
     // verticalAlign: "middle",
     // fontSize: 16,
