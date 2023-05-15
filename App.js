@@ -15,24 +15,34 @@ const App = () => {
       <Stack.Navigator>
         {/* siempre se pinta el primero, encima del otro*/}
         {/* options: objeto de propiedades que tendra el HomeScreen */}
-        <Stack.Screen name="HomeScreen" component={HomeScreen}
-          options={({navigation}) => ({
-            title: "Tasks App",//el titulo es el que se muestra en la barra arriba
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={({ navigation }) => ({
+            title: "Tasks App", //el titulo es el que se muestra en la barra arriba
             headerStyle: { backgroundColor: "#222f3e" },
             headerTitleStyle: { color: "#ffffff" },
             headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.navigate('TaskFormScreen')}>
-                <Text style={{ color: "#ffffff", marginRight:20, fontSize: 20 }}>Agregar</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("TaskFormScreen")}
+              >
+                <Text
+                  style={{ color: "#ffffff", marginRight: 20, fontSize: 20 }}
+                >
+                  Agregar
+                </Text>
               </TouchableOpacity>
             ),
           })}
         />
-        <Stack.Screen name="TaskFormScreen" component={TaskFormScreen}
+        <Stack.Screen
+          name="TaskFormScreen"
+          component={TaskFormScreen}
           options={{
             title: "Agregar tarea",
             headerStyle: { backgroundColor: "#222f3e" },
             headerTitleStyle: { color: "#ffffff" },
-            headerTintColor: "#ffffff",//la flecha hacia atras
+            headerTintColor: "#ffffff", //la flecha hacia atras
           }}
         />
       </Stack.Navigator>

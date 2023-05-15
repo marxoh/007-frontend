@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "b127.p007.frontend.expo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
