@@ -1,6 +1,7 @@
-// funciones que van a consultar al backend
+// funciones que van a consultar al backend todas las consultas
 
-const API = 'http://192.168.1.12:3000/tasks'
+// const API = 'http://192.168.1.12:3000/tasks'
+const API = 'https://baquend.alwaysdata.net/tasks'
 
 //obtener todos los task
 export const getTasks = async () => {
